@@ -1,19 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./App.css";
-// import MyFooter from "./Components/MyFooter";
 import { Container } from "react-bootstrap";
-// import MyNavBar from "./Components/MyNavBar";
 import ListBook from "./Components/ListBook";
-import fantasy from "./Data/fantasy.json";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
-import CommentArea from "./Components/CommentArea";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Homepage from "./Components/Homepage";
+import Library from "./Components/Library";
+import Cart from "./Components/Cart";
 
 function App() {
   return (
@@ -23,6 +15,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />}></Route>
             <Route path="/ricerca" element={<ListBook />}></Route>
+            <Route path="/library" element={<Library />}></Route>
+            <Route path="/cart" element={<Cart />}></Route>
           </Routes>
         </BrowserRouter>
       </Container>

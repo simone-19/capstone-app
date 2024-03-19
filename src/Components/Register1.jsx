@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
+import dragonball from "../Data/goku.jpg";
 const Register1 = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -40,21 +41,10 @@ const Register1 = () => {
   };
 
   return (
-    <form id="register-form" className="bg-section">
-      <h2 className="text-center">Registrati</h2>
-      <div className="row justify-content-center align-items-center">
-        <div className="col-6">
-          <InputGroup className="d-flex flex-column w-100">
-            <Form.Label className="text-center mt-2">Username</Form.Label>
-          </InputGroup>
-          <Form.Control
-            className="w-100 m-auto"
-            required
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          ></Form.Control>
+    <span className="vh-100">
+      <h2 className="text-center m-2">Registrati</h2>
+      <form id="register-form" className="bg-section d-flex ">
+        <div className="row justify-content-center align-items-center">
           <InputGroup className="d-flex flex-column w-100">
             <Form.Label className="text-center mt-2">Email</Form.Label>
           </InputGroup>
@@ -78,8 +68,7 @@ const Register1 = () => {
               setPassword(e.target.value);
             }}
           ></Form.Control>
-        </div>
-        <div className="col-6">
+
           <InputGroup className="d-flex flex-column w-100">
             <Form.Label className="text-center mt-2">Nome</Form.Label>
           </InputGroup>
@@ -102,17 +91,28 @@ const Register1 = () => {
               setCognome(e.target.value);
             }}
           ></Form.Control>
+          <InputGroup className="d-flex flex-column w-100">
+            <Form.Label className="text-center mt-2">Username</Form.Label>
+          </InputGroup>
+          <Form.Control
+            className="w-100 m-auto"
+            required
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          ></Form.Control>
+          <div className="text-center mt-3 mb-3">
+            <Button
+              className="save-button rounded-3 px-3 btnEdit cardUserGame btnLR"
+              onClick={registraUtente}
+            >
+              Registrati
+            </Button>
+          </div>
         </div>
-        <div className="text-center mt-3 ">
-          <Button
-            className="save-button rounded-3 px-3 btnEdit cardUserGame btnLR"
-            onClick={registraUtente}
-          >
-            Registrati
-          </Button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </span>
   );
 };
 export default Register1;

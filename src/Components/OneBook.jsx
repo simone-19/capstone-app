@@ -1,29 +1,26 @@
-import { Component } from "react";
-import { Card } from "react-bootstrap";
+import { Card, CardTitle, Col } from "react-bootstrap";
+import AddCart from "./AddCart";
 
-class OneBook extends Component {
-  render() {
-    return (
-      <>
-        <Card
-          onClick={() => this.props.changeSelectedBook(this.props.book.asin)}
-          style={{
-            border:
-              this.props.selectedBook === this.props.book.asin
-                ? "3px solid red"
-                : "none",
-          }}
-        >
-          <Card.Img variant="top" src={this.props.book.img} />
-          <Card.Body>
-            <Card.Title style={{ color: "black" }}>
-              {this.props.book.title}
+const OneBook = ({ book }) => {
+  return (
+    <>
+      <Col xs={12} md={4}>
+        <Card id="cardBook">
+          <Card.Img id="cardImg" variant="top" src={book.immagine} />
+          <Card.Body className="d-flex-column justify-content-center">
+            <Card.Title className="cardInterna d-flex justify-content-center">
+              {book.titolo}
             </Card.Title>
+            <Card.Title className="cardInterna d-flex justify-content-center">
+              {book.prezzo}$
+            </Card.Title>
+
+            <AddCart book={book} />
           </Card.Body>
         </Card>
-      </>
-    );
-  }
-}
+      </Col>
+    </>
+  );
+};
 
 export default OneBook;

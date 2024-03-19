@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
 
 const MyNavBar = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   return (
     <Navbar expand="lg" className="mb-3 color-word" id="nav">
       <Container fluid>
@@ -23,9 +23,11 @@ const MyNavBar = () => {
               </Nav.Link>
             </div>
             <div className="speech-bubble speech-bubble-top mt-2 me-1 mb-4">
-              <Nav.Link className="color-word">
-                {/* comment area */}
-                AREA COMMENTI
+              <Nav.Link
+                className="color-word"
+                onClick={() => navigate("/cart")}
+              >
+                CARRELLO
               </Nav.Link>
             </div>
             <div className="speech-bubble speech-bubble-top mt-2 me-1 mb-4">
@@ -36,6 +38,15 @@ const MyNavBar = () => {
               >
                 RICERCA
                 {/* in listbook prendere il form e inserirlo qui */}
+              </Nav.Link>
+            </div>
+            <div className="speech-bubble speech-bubble-top mt-2 me-1 mb-4">
+              <Nav.Link
+                href="#"
+                className="color-word"
+                onClick={() => navigate("/library")}
+              >
+                LIBRERIA
               </Nav.Link>
             </div>
           </Nav>
