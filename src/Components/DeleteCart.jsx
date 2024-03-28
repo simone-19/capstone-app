@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Alert } from "react-bootstrap";
-import { CartPlus } from "react-bootstrap-icons";
+import { Trash } from "react-bootstrap-icons";
 
-const AddCart = ({ book }) => {
+const DeleteCart = ({ book, fUtente }) => {
   const token = localStorage.getItem("authToken");
   const id = localStorage.getItem("authId");
   const [user, setUser] = useState();
@@ -27,9 +26,9 @@ const AddCart = ({ book }) => {
       })
       .catch((err) => console.log("ERRORE!", err));
   };
-  const add = () => {
+  const remove = () => {
     fetch(
-      `${process.env.REACT_APP_BACKEND}/cart/${user.cart.id}/addBook?bookId=${book.id}`,
+      `${process.env.REACT_APP_BACKEND}/cart/${user.cart.id}/removeBook?bookId=${book.id}`,
       {
         method: "POST",
         headers: {
@@ -45,8 +44,10 @@ const AddCart = ({ book }) => {
           throw new Error("errore nella fetch");
         }
       })
+
       .then(() => {
-        alert("elemento aggiunto al carrello");
+        fUtente();
+        alert("elemento cancellato");
       })
 
       .catch((err) => console.log("ERRORE!", err));
@@ -54,6 +55,16 @@ const AddCart = ({ book }) => {
   useEffect(() => {
     getUtente();
   }, [id]);
-  return <CartPlus onClick={() => add()}></CartPlus>;
+  return (
+    <>
+      {user && (
+        <Trash
+          id="removeInCart"
+          className="d-flex"
+          onClick={() => remove()}
+        ></Trash>
+      )}
+    </>
+  );
 };
-export default AddCart;
+export default DeleteCart;

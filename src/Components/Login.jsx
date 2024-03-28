@@ -72,13 +72,8 @@ const Login = () => {
             </Button>
           </div>
         </form>
-        <div className="d-flex col-md-6 col-xs-12 justify-content-center">
-          <img
-            id="img-login"
-            className="flicker-out-1"
-            src={dragonball}
-            alt="dragon-ball"
-          />
+        <div className="d-flex col-md-6 col-xs-12 justify-content-center align-items-center">
+          <img className="flicker-in-1" src={dragonball} alt="dragon-ball" />
         </div>
       </div>
     </>
